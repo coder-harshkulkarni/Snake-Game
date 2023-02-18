@@ -1,4 +1,4 @@
-import turtle
+from turtle import Turtle
 
 MOVE_DISTANCE = 20
 POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
@@ -16,7 +16,7 @@ class Snake:
         self.head = self.turtles[0]
 
     def add_tail(self, position):
-        new_timmy = turtle.Turtle()
+        new_timmy = Turtle()
         new_timmy.shape("circle")
         new_timmy.color("white")
         new_timmy.penup()
@@ -26,6 +26,13 @@ class Snake:
     def create_snake(self):
         for position in POSITIONS:
             self.add_tail(position)
+
+    def reset(self):
+        for tur in self.turtles:
+            tur.goto(2000, 2000)
+        self.turtles.clear()
+        self.create_snake()
+        self.head = self.turtles[0]
 
     def extend_tail(self):
         self.add_tail(self.turtles[-1].pos())

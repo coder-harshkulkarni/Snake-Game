@@ -45,13 +45,13 @@ while is_game_continue:
             snake.head.xcor() < -(screen.window_width() / 2 - SNAKE_SIZE) or
             snake.head.ycor() > (screen.window_height() / 2 - SNAKE_SIZE) or
             snake.head.ycor() < -(screen.window_height() / 2 - SNAKE_SIZE)):
-        is_game_continue = False
-        scoreboard.game_over()
+        scoreboard.reset()
+        snake.reset()
 
     # Detect collision with tail.
     for turtle in snake.turtles[1:]:
         if snake.head.distance(turtle) < 10:
-            is_game_continue = False
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
 
 screen.exitonclick()
